@@ -249,7 +249,7 @@ public final class Config
     return get_dip_pref(dm, pref_base_name + suffix, def);
   }
 
-  private int getThemeId(Resources res, String theme_name)
+  public static int getThemeId(Resources res, String theme_name)
   {
     int night_mode = res.getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
     switch (theme_name)

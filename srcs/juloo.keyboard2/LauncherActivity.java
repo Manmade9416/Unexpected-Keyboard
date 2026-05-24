@@ -2,12 +2,14 @@ package juloo.keyboard2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Animatable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
@@ -36,6 +38,8 @@ public class LauncherActivity extends Activity implements Handler.Callback
   @Override
   public void onCreate(Bundle savedInstanceState)
   {
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    setTheme(Config.getThemeId(getResources(), prefs.getString("theme", "")));
     super.onCreate(savedInstanceState);
     setContentView(R.layout.launcher_activity);
     _tryhere_text = (TextView)findViewById(R.id.launcher_tryhere_text);
